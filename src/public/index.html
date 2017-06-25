@@ -188,7 +188,7 @@
 	  <div class = "row">
 		<form class="col s12" action="/sendlink" method = "post">
 	      <div class="input-field col s6">
-            <input id="photolink" type="text" class="validate">
+            <input id="photolink" type="text" class="validate" onclick="sendpic()">
             <label for="link">Link</label>
           </div>
 		  <br>
@@ -197,6 +197,9 @@
 		  </button>
 	    </form>
 		  
+	  </div>
+	  <div id="linkpic">
+	  
 	  </div>
 
     </div>
@@ -234,7 +237,7 @@
     </div>
     <div class="footer-copyright">
       <div class="container">
-      Made by <a class="brown-text text-lighten-3">Team fuck up</a>
+      Made by <a class="brown-text text-lighten-3">Team Paul and Rohan</a>
       </div>
     </div>
   </footer>
@@ -250,35 +253,9 @@
 	function sendpic(){
 		var piclink = $("#photolink").val();
 		console.log(piclink);
-		
-		var params = {
-            // Request parameters
-        };
-
-        $.ajax({
-            // NOTE: You must use the same location in your REST call as you used to obtain your subscription keys.
-            //   For example, if you obtained your subscription keys from westcentralus, replace "westus" in the 
-            //   URL below with "westcentralus".
-            url:  + $.param(params),
-            beforeSend: function(xhrObj){
-                // Request headers
-                xhrObj.setRequestHeader("Content-Type","application/json");
-
-                // NOTE: Replace the "Ocp-Apim-Subscription-Key" value with a valid subscription key.
-                xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key","7148e51451224d669d207afd909c9b75");
-            },
-            type: "POST",
-            // Request body
-            data: '{"url": piclink}',
-        })
-        .done(function(data) {
-            alert("success");
-			console.log(data);
-        })
-        .fail(function() {
-            alert("error");
-        });
-	
+		lp = document.getElementById('linkpic');
+		var data = piclink;
+		lp.setAttribute('src', data);
 	}
   </script>
   
